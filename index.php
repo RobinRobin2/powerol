@@ -1,36 +1,45 @@
 <?php
-
-
-
-if(isset($_POST['loginbtn'])){
-
-  $checkReturn = $user->login();
-
-  if($checkReturn== "success"){
-      $user->redirect("home.php");
-
-  }
-  else{
-    echo "<p class=' bg-danger text-center text-white'>{$checkReturn}</p>";
-  }
-
-}
-
-
-
-
+	include_once "header.php";
+	
+	if(isset($_POST['submit_login'])){
+		$loginReturn = $user->login(); 
+		
+		if($loginReturn == "success"){
+			$user->redirect("home.php");
+		}
+	}
 ?>
-<body>
-    
-
-<form class="d-flex justify-content-center" method="POST">
-  <label for="fname">Username or email:</label><br>
-  <input type="text" id="fname" name="username"><br>
-  <label for="lname">Password:</label><br>
-  <input type="text" id="lname" name="psword"><br>
-  <input type="submit" value="Log in" name="loginbtn">
-</form>
 
 
-</body>
-</html>
+
+<div id="content">
+	<div class="content-inner">
+		<div class="wrapper fadeInDown">
+			<div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+				<div class="fadeIn first">
+				  <i class="fas fa-house-user login-icon"></i>
+				  <h2>Log in</h2>
+				</div>
+
+				<!-- Login Form -->
+				<form method="POST">
+				  <input type="text" id="username" class="fadeIn second" name="username" placeholder="User name or e-mail">
+				  <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+				  <input type="submit" name="submit_login" class="fadeIn fourth" value="Log In">
+				</form>
+
+				<!-- Remind Passowrd -->
+				<div id="formFooter">
+				  <span>Not a user? </span><a class="underlineHover" href="register.php">Register here!</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+include_once "footer.php";
+?>

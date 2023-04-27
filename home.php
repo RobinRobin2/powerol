@@ -1,21 +1,28 @@
-
 <?php
-include_once "includes/class.user.php";
-include_once "includes/config.php";
+include_once "header.php";
 
 if(!$user->checkLoginStatus()){
-    $user->redirect("index.php");
+	$user->redirect("index.php");
 }
 
 
+?>
+<div id="content">
+<div class="error-section">
+<?php
 
 
 ?>
+</div>
+<div class="row">
+	<?php 
+	echo "<h2>Välkommen " . $_SESSION["uname"] . "</h2>"; 
+	echo "<h3>Du har användarroll " . $_SESSION["urole"] . " och din id är " .$_SESSION["uid"]."</h3>"; 
+	
+	?>
 
-
-<div class="content-inner">
-  <?php
-  echo "<h2>Välkommen " . $_SESSION['username'] . "</h2>";
-  echo "<h3>Du har användarroll " . $_SESSION['urole'] . " och din id är " .$_SESSION["u_id"]."</h3>";
-
-  ?>
+</div>
+</div>
+<?php
+include_once "footer.php";
+?>
